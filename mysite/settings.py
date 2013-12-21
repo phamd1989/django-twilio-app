@@ -9,7 +9,9 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-DATABASES = {
+import os
+if 'RDS_DB_NAME' in os.environ:
+  DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': os.environ['RDS_DB_NAME'],
@@ -18,7 +20,7 @@ DATABASES = {
         'HOST': os.environ['RDS_HOSTNAME'],
         'PORT': os.environ['RDS_PORT'],
     }
-}
+  }
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
